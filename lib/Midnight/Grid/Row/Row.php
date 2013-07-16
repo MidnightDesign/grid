@@ -31,7 +31,7 @@ class Row implements RowInterface
 
     public function setCell(CellInterface $cell, ColumnInterface $column)
     {
-        $this->getCells()->attach($column, $cell);
+        $this->getCells()->attach($cell, $column);
         $cell->setRow($this);
     }
 

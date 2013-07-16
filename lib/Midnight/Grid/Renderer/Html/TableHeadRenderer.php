@@ -3,6 +3,7 @@
 namespace Midnight\Grid\Renderer\Html;
 
 use Midnight\Grid\GridInterface;
+use Midnight\Grid\Renderer\Html\TableHeaderRenderer;
 
 class TableHeadRenderer {
 
@@ -30,8 +31,9 @@ class TableHeadRenderer {
     {
         $r = array();
         $columns = $this->getGrid()->getColumns();
+        $tableHeaderRenderer = new TableHeaderRenderer();
         foreach($columns as $column) {
-            $r[] = $column->getName();
+            $r[] = $tableHeaderRenderer->render($column);
         }
         return join(PHP_EOL, $r);
     }
