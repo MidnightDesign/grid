@@ -10,5 +10,6 @@
     ],
     "require": {
         "zendframework/zend-loader": "2.2.1"
-    }
+    },
+    "psr-0": { "Midnight\\Grid\\": "lib/" }
 }
