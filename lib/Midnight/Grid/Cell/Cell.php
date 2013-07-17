@@ -2,17 +2,19 @@
 
 namespace Midnight\Grid\Cell;
 
+use Midnight\Grid\AbstractGridElement;
 use Midnight\Grid\Row\RowInterface;
 
-class Cell implements CellInterface
+class Cell extends AbstractGridElement implements CellInterface
 {
 
     private $row;
     private $value;
 
-    function __construct($value = null)
+    function __construct($value = null, $attributes = array())
     {
         $this->value = $value;
+        $this->setAttributes($attributes);
     }
 
     public function setRow(RowInterface $row)

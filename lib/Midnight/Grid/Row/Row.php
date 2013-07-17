@@ -2,11 +2,12 @@
 
 namespace Midnight\Grid\Row;
 
+use Midnight\Grid\AbstractGridElement;
 use Midnight\Grid\Cell\CellInterface;
 use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\GridInterface;
 
-class Row implements RowInterface
+class Row extends AbstractGridElement implements RowInterface
 {
 
     /**
@@ -19,9 +20,10 @@ class Row implements RowInterface
      */
     private $cells;
 
-    function __construct()
+    function __construct($attributes = array())
     {
         $this->cells = new \SplObjectStorage();
+        $this->setAttributes($attributes);
     }
 
     public function setGrid(GridInterface $grid)

@@ -5,7 +5,7 @@ namespace Midnight\Grid;
 use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\Row\RowInterface;
 
-class Grid implements GridInterface
+class Grid extends AbstractGridElement implements GridInterface
 {
 
     /**
@@ -17,10 +17,11 @@ class Grid implements GridInterface
      */
     private $columns;
 
-    function __construct()
+    function __construct($attributes)
     {
         $this->rows = new \SplDoublyLinkedList();
         $this->columns = new \SplDoublyLinkedList();
+        $this->setAttributes($attributes);
     }
 
     public function getRows()
