@@ -17,7 +17,7 @@ class Grid extends AbstractGridElement implements GridInterface
      */
     private $columns;
 
-    function __construct($attributes)
+    function __construct($attributes = array())
     {
         $this->rows = new \SplDoublyLinkedList();
         $this->columns = new \SplDoublyLinkedList();
