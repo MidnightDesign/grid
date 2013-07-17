@@ -8,5 +8,9 @@
             "email": "r.gottesheim@loot.at"
         }
     ],
-    "psr-0": { "Midnight\\Grid\\": "lib/" }
+    "autoload": {
+        "psr-0": {
+            "Midnight\\Grid\\": "lib/"
+        }
+    }
 }
