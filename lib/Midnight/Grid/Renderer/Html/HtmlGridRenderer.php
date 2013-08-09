@@ -4,6 +4,7 @@ namespace Midnight\Grid\Renderer\Html;
 
 use DOMElement;
 use Midnight\Grid\Cell\CellInterface;
+use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\Grid;
 use Midnight\Grid\GridInterface;
 use Midnight\Grid\Renderer\GridRendererInterface;
@@ -12,7 +13,7 @@ use Midnight\Grid\Row\RowInterface;
 class HtmlGridRenderer implements GridRendererInterface
 {
     /**
-     * @var Grid
+     * @var Grid\GridInterface
      */
     private $grid;
     /**
@@ -30,6 +31,7 @@ class HtmlGridRenderer implements GridRendererInterface
         $this->document->saveHTML();
         $table = $this->document->createElement('table');
         $table->appendChild($this->body());
+        $table->appendChild($this->head());
         return $this->document->saveHTML();
     }
 
@@ -60,5 +62,23 @@ class HtmlGridRenderer implements GridRendererInterface
         $td = new DOMElement('td');
         $td->appendChild(new \DOMText($cell->getValue()));
         return $td;
+    }
+
+    private function head()
+    {
+        $thead = new DOMElement('thead');
+        $tr = new DOMElement('tr');
+        $thead->appendChild($tr);
+        foreach ($this->grid->getColumns() as $column) {
+            $tr->appendChild($this->th($column));
+        }
+        return $thead;
+    }
+
+    private function th(ColumnInterface $column)
+    {
+        $th = $this->document->createElement('th');
+        $th->appendChild($this->document->createTextNode($column->getLabel()));
+        return $th;
     }
 }

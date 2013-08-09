@@ -2,6 +2,7 @@
 
 namespace Midnight\Grid\Grid;
 
+use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\Datasource\DatasourceInterface;
 use Midnight\Grid\Row\RowInterface;
 
@@ -23,5 +24,13 @@ class DatasourceGrid implements DatasourceGridInterface
     public function getRows()
     {
         $this->ds->getData();
+    }
+
+    /**
+     * @return ColumnInterface[]
+     */
+    public function getColumns()
+    {
+        $this->ds->getColumns();
     }
 }

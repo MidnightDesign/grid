@@ -2,6 +2,7 @@
 
 namespace Midnight\Grid\Grid;
 
+use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\Row\RowInterface;
 
 interface GridInterface
@@ -10,4 +11,9 @@ interface GridInterface
      * @return RowInterface[]
      */
     public function getRows();
+
+    /**
+     * @return ColumnInterface
+     */
+    public function getColumns();
 }
