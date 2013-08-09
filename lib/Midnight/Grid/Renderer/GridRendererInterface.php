@@ -2,6 +2,15 @@
 
 namespace Midnight\Grid\Renderer;
 
-interface GridRendererInterface {
+use Midnight\Grid\GridInterface;
+
+interface GridRendererInterface
+{
+
+    /**
+     * @param GridInterface $grid
+     * @return string
+     */
+    public function render(GridInterface $grid);
 
 }
