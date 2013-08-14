@@ -2,11 +2,12 @@
 
 namespace Midnight\Grid\Renderer\Html;
 
+use DOMDocument;
 use DOMElement;
 use Midnight\Grid\Cell\CellInterface;
 use Midnight\Grid\Column\ColumnInterface;
 use Midnight\Grid\Grid;
-use Midnight\Grid\GridInterface;
+use Midnight\Grid\Grid\GridInterface;
 use Midnight\Grid\Renderer\GridRendererInterface;
 use Midnight\Grid\Row\RowInterface;
 
@@ -17,7 +18,7 @@ class HtmlGridRenderer implements GridRendererInterface
      */
     private $grid;
     /**
-     * @var \DOMDocument
+     * @var DOMDocument
      */
     private $document;
 
@@ -27,17 +28,18 @@ class HtmlGridRenderer implements GridRendererInterface
      */
     public function render(GridInterface $grid)
     {
-        $this->document = new \DOMDocument();
-        $this->document->saveHTML();
+        $this->grid = $grid;
+        $this->document = new DOMDocument();
         $table = $this->document->createElement('table');
         $table->appendChild($this->body());
         $table->appendChild($this->head());
+        $this->document->appendChild($table);
         return $this->document->saveHTML();
     }
 
     private function body()
     {
-        $tbody = new DOMElement('tbody');
+        $tbody = $this->document->createElement('tbody');
         foreach ($this->grid->getRows() as $row) {
             $tbody->appendChild($this->row($row));
         }
@@ -46,8 +48,9 @@ class HtmlGridRenderer implements GridRendererInterface
 
     private function row(RowInterface $row)
     {
-        $tr = new DOMElement('tr');
-        foreach ($row->getCells() as $cell) {
+        $tr = $this->document->createElement('tr');
+        foreach ($this->grid->getColumns() as $column) {
+            $cell = $row->getCell($column);
             $tr->appendChild($this->cell($cell));
         }
         return $tr;
@@ -59,15 +62,20 @@ class HtmlGridRenderer implements GridRendererInterface
      */
     private function cell(CellInterface $cell)
     {
-        $td = new DOMElement('td');
-        $td->appendChild(new \DOMText($cell->getValue()));
+        $td = $this->document->createElement('td');
+        try {
+            $td->appendChild($this->document->createTextNode($cell->getValue()));
+        } catch (\Exception $e) {
+            var_dump($td);
+            die;
+        }
         return $td;
     }
 
     private function head()
     {
-        $thead = new DOMElement('thead');
-        $tr = new DOMElement('tr');
+        $thead = $this->document->createElement('thead');
+        $tr = $this->document->createElement('tr');
         $thead->appendChild($tr);
         foreach ($this->grid->getColumns() as $column) {
             $tr->appendChild($this->th($column));

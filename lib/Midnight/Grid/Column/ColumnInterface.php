@@ -2,8 +2,8 @@
 
 namespace Midnight\Grid\Column;
 
-interface ColumnInterface {
-
+interface ColumnInterface
+{
     /**
      * @return string
      */

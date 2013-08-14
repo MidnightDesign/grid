@@ -2,12 +2,9 @@
 
 namespace Midnight\Grid\Row;
 
-use Midnight\Grid\Cell\CellInterface;
+use Midnight\Grid\Column\ColumnInterface;
 
 interface RowInterface
 {
-    /**
-     * @return CellInterface[]
-     */
-    public function getCells();
+    public function getCell(ColumnInterface $column);
 }

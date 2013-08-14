@@ -2,7 +2,7 @@
 
 namespace Midnight\Grid\Renderer;
 
-use Midnight\Grid\GridInterface;
+use Midnight\Grid\Grid\GridInterface;
 
 interface GridRendererInterface
 {

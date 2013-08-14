@@ -13,7 +13,7 @@ interface GridInterface
     public function getRows();
 
     /**
-     * @return ColumnInterface
+     * @return ColumnInterface[]
      */
     public function getColumns();
 }
