@@ -2,7 +2,9 @@
 
 namespace Midnight\Grid\Cell;
 
-class Cell implements CellInterface
+use Midnight\Grid\DataAware;
+
+class Cell extends DataAware implements CellInterface
 {
     /**
      * @var mixed
