@@ -15,11 +15,11 @@ class Grid extends DataAware implements GridInterface
     /**
      * @var RowInterface[]
      */
-    public $rows;
+    private $rows;
     /**
      * @var ColumnInterface[]
      */
-    public $columns;
+    private $columns;
 
     /**
      * @return RowInterface[]
