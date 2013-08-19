@@ -1,12 +1,13 @@
 <?php
 
 namespace Midnight\Grid\Column;
+use Midnight\Grid\DataAware;
 
 /**
  * A really simple ColumnInterface implementation
  * @package Midnight\Grid\Column
  */
-class Column implements ColumnInterface
+class Column extends DataAware implements ColumnInterface
 {
     /**
      * @var string

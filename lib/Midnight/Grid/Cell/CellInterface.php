@@ -2,7 +2,9 @@
 
 namespace Midnight\Grid\Cell;
 
-interface CellInterface
+use Midnight\Grid\DataInterface;
+
+interface CellInterface extends DataInterface
 {
     /**
      * @return mixed

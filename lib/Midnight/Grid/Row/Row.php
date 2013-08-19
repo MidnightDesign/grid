@@ -4,9 +4,10 @@ namespace Midnight\Grid\Row;
 
 use Midnight\Grid\Cell\CellInterface;
 use Midnight\Grid\Column\ColumnInterface;
+use Midnight\Grid\DataAware;
 use SplObjectStorage;
 
-class Row implements RowInterface
+class Row extends DataAware implements RowInterface
 {
     /**
      * @var SplObjectStorage

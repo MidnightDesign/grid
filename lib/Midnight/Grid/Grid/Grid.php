@@ -3,13 +3,14 @@
 namespace Midnight\Grid\Grid;
 
 use Midnight\Grid\Column\ColumnInterface;
+use Midnight\Grid\DataAware;
 use Midnight\Grid\Row\RowInterface;
 
 /**
  * A really simple GridInterface implementation
  * @package Midnight\Grid\Grid
  */
-class Grid implements GridInterface
+class Grid extends DataAware implements GridInterface
 {
     /**
      * @var RowInterface[]

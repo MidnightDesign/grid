@@ -2,7 +2,9 @@
 
 namespace Midnight\Grid\Column;
 
-interface ColumnInterface
+use Midnight\Grid\DataInterface;
+
+interface ColumnInterface extends DataInterface
 {
     /**
      * @return string
