@@ -1,18 +1,23 @@
 {
     "name": "midnight/grid",
-    "description": "Data table library",
+    "description": "A library for two-dimensional data grids (tables)",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
     "authors": [
         {
             "name": "Rudolph Gottesheim",
             "email": "r.gottesheim@loot.at"
         }
     ],
-    "require": {
-        "php": ">=5.4.0"
-    },
+    "minimum-stability": "stable",
     "autoload": {
-        "psr-0": {
-            "Midnight\\Grid\\": "lib/"
+        "psr-4": {
+            "Midnight\\Grid\\": "src"
         }
     }
 }
