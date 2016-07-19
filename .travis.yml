@@ -5,8 +5,8 @@ php:
   - nightly
 matrix:
   allow_failures:
-    - hhvm
-    - nightly
+    - php: hhvm
+    - php: nightly
 before_script:
   - composer install
 script: ./vendor/bin/phpunit --coverage-clover=coverage.clover
