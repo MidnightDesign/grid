@@ -3,6 +3,9 @@ php:
   - '7.0'
   - hhvm
   - nightly
+matrix:
+  allow_failures:
+    - hhvm
 before_script:
   - composer install
 script: ./vendor/bin/phpunit --coverage-clover=coverage.clover
