@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Midnight\Grid\DataSourceGrid;
 
@@ -7,14 +7,14 @@ use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
 class RecordFieldCell implements CellInterface
 {
-    /** @var \Midnight\Grid\DataSourceGrid\DataSource\RecordInterface */
+    /** @var RecordInterface */
     private $record;
     /** @var string */
     private $key;
 
     /**
      * RecordFieldCell constructor.
-     * @param \Midnight\Grid\DataSourceGrid\DataSource\RecordInterface $record
+     * @param RecordInterface $record
      * @param string $key
      */
     public function __construct(RecordInterface $record, string $key)

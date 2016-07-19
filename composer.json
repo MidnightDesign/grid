@@ -19,5 +19,10 @@
         "psr-4": {
             "Midnight\\Grid\\": "src"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MidnightTest\\Unit\\Grid\\": "tests/unit"
+        }
     }
 }

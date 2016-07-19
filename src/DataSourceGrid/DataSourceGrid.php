@@ -1,12 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Midnight\Grid\DataSourceGrid;
 
-use Midnight\Grid\ColumnInterface;
-use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
-use Midnight\Grid\GridInterface;
-use Midnight\Grid\RowInterface;
-use Midnight\Grid\SimpleColumn;
+use Midnight\Grid\{
+    ColumnInterface, DataSourceGrid\DataSource\RecordInterface, GridInterface, RowInterface, SimpleColumn
+};
 
 class DataSourceGrid implements GridInterface
 {

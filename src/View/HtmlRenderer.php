@@ -1,10 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Midnight\Grid\View;
 
-use Midnight\Grid\ColumnInterface;
-use Midnight\Grid\GridInterface;
-use Midnight\Grid\RowInterface;
+use Midnight\Grid\{
+    ColumnInterface, GridInterface, RowInterface
+};
 
 /**
  * @todo Use a template

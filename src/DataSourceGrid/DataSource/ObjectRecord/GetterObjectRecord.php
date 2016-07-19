@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 
@@ -35,7 +35,7 @@ class GetterObjectRecord implements RecordInterface
 
     public function hasField(string $key):bool
     {
-        return method_exists($this->object, $this->keyToGetter($key));
+        return array_key_exists($key, $this->getterMap);
     }
 
     private function keyToGetter(string $key):string
