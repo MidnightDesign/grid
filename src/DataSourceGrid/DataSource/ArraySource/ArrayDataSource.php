@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource\ArraySource;
 
@@ -18,23 +18,23 @@ class ArrayDataSource implements DataSourceInterface
     /**
      * @return RecordInterface[]
      */
-    public function getRecords():array
+    public function getRecords(): array
     {
         return array_map([$this, 'createRecord'], $this->data);
-    }
-
-    private function createRecord(array $data):RecordInterface
-    {
-        return new ArrayRecord($data);
     }
 
     /**
      * @return string[]
      */
-    public function getFieldNames():array
+    public function getFieldNames(): array
     {
         return array_unique(array_reduce($this->data, function (array $fieldNames, array $recordData) {
             return array_merge($fieldNames, array_keys($recordData));
         }, []));
+    }
+
+    private function createRecord(array $data): RecordInterface
+    {
+        return new ArrayRecord($data);
     }
 }

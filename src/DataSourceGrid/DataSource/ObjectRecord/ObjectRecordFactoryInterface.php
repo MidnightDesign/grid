@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 
@@ -9,10 +9,10 @@ interface ObjectRecordFactoryInterface
     /**
      * @param object $object
      */
-    public function create($object):RecordInterface;
+    public function create($object): RecordInterface;
 
     /**
      * @return string[]
      */
-    public function getFieldNames():array;
+    public function getFieldNames(): array;
 }

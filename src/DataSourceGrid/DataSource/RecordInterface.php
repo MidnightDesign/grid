@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource;
 
@@ -10,5 +10,5 @@ interface RecordInterface
      */
     public function getField(string $key);
 
-    public function hasField(string $key):bool;
+    public function hasField(string $key): bool;
 }

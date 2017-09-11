@@ -17,16 +17,6 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
     /** @var ObjectRecordFactoryInterface */
     private $recordFactory;
 
-    protected function setUp()
-    {
-        $this->objects = [
-            new Person('Rudi', 30),
-            new Person('Caro', 25),
-        ];
-        $this->recordFactory = new GetterRecordFactory(['name' => 'getName', 'age' => 'getAge']);
-        $this->dataSource = new ObjectArrayDataSource($this->objects, $this->recordFactory);
-    }
-
     public function testGetRecordsReturnsAnArrayOfRecords()
     {
         $records = $this->dataSource->getRecords();
@@ -42,5 +32,15 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $fieldNames);
         $this->assertContains('name', $fieldNames);
         $this->assertContains('age', $fieldNames);
+    }
+
+    protected function setUp()
+    {
+        $this->objects = [
+            new Person('Rudi', 30),
+            new Person('Caro', 25),
+        ];
+        $this->recordFactory = new GetterRecordFactory(['name' => 'getName', 'age' => 'getAge']);
+        $this->dataSource = new ObjectArrayDataSource($this->objects, $this->recordFactory);
     }
 }

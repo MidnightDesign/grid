@@ -10,11 +10,6 @@ class GetterRecordFactoryTest extends PHPUnit_Framework_TestCase
     /** @var GetterRecordFactory */
     private $factory;
 
-    protected function setUp()
-    {
-        $this->factory = new GetterRecordFactory(['name' => 'getName', 'age' => 'getAge']);
-    }
-
     public function testCreate()
     {
         $record = $this->factory->create(new Person('Rudi', 30));
@@ -30,5 +25,10 @@ class GetterRecordFactoryTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $fieldNames);
         $this->assertContains('name', $fieldNames);
         $this->assertContains('age', $fieldNames);
+    }
+
+    protected function setUp()
+    {
+        $this->factory = new GetterRecordFactory(['name' => 'getName', 'age' => 'getAge']);
     }
 }

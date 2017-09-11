@@ -13,11 +13,6 @@ class ArrayRecordTest extends PHPUnit_Framework_TestCase
     /** @var ArrayRecord */
     private $record;
 
-    protected function setUp()
-    {
-        $this->record = new ArrayRecord($this->data);
-    }
-
     public function testGetField()
     {
         $this->assertSame('Rudi', $this->record->getField('name'));
@@ -36,5 +31,10 @@ class ArrayRecordTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->record->hasField('name'));
         $this->assertTrue($this->record->hasField('age'));
         $this->assertFalse($this->record->hasField('does-not-exist'));
+    }
+
+    protected function setUp()
+    {
+        $this->record = new ArrayRecord($this->data);
     }
 }

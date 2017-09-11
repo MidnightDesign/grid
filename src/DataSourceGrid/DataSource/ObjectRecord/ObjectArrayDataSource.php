@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 
@@ -14,6 +14,7 @@ class ObjectArrayDataSource implements DataSourceInterface
 
     /**
      * ObjectArrayDataSource constructor.
+     *
      * @param object[] $objects
      * @param ObjectRecordFactoryInterface $recordFactory
      */
@@ -26,7 +27,7 @@ class ObjectArrayDataSource implements DataSourceInterface
     /**
      * @return RecordInterface[]
      */
-    public function getRecords():array
+    public function getRecords(): array
     {
         return array_map([$this->recordFactory, 'create'], $this->objects);
     }
@@ -34,7 +35,7 @@ class ObjectArrayDataSource implements DataSourceInterface
     /**
      * @return string[]
      */
-    public function getFieldNames():array
+    public function getFieldNames(): array
     {
         return $this->recordFactory->getFieldNames();
     }

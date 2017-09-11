@@ -13,12 +13,6 @@ class GetterObjectRecordTest extends PHPUnit_Framework_TestCase
     /** @var GetterObjectRecord */
     private $record;
 
-    protected function setUp()
-    {
-        $this->object = new Person('Rudi', 30);
-        $this->record = new GetterObjectRecord($this->object, ['name' => 'getName', 'age' => 'getAge']);
-    }
-
     public function testGetField()
     {
         $this->assertSame('Rudi', $this->record->getField('name'));
@@ -37,5 +31,11 @@ class GetterObjectRecordTest extends PHPUnit_Framework_TestCase
         $this->assertTrue($this->record->hasField('name'));
         $this->assertTrue($this->record->hasField('age'));
         $this->assertFalse($this->record->hasField('does-not-exist'));
+    }
+
+    protected function setUp()
+    {
+        $this->object = new Person('Rudi', 30);
+        $this->record = new GetterObjectRecord($this->object, ['name' => 'getName', 'age' => 'getAge']);
     }
 }

@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid;
 
@@ -16,7 +16,7 @@ class RecordRow implements RowInterface
         $this->record = $record;
     }
 
-    public function getCell(ColumnInterface $column):CellInterface
+    public function getCell(ColumnInterface $column): CellInterface
     {
         return new RecordFieldCell($this->record, $column->getKey());
     }

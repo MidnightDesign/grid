@@ -1,26 +1,32 @@
 {
-    "name": "midnight/grid",
-    "description": "A library for two-dimensional data grids (tables)",
-    "type": "library",
-    "license": "MIT",
-    "require-dev": {
-        "phpunit/phpunit": "^5.4"
-    },
-    "authors": [
-        {
-            "name": "Rudolph Gottesheim",
-            "email": "r.gottesheim@loot.at"
-        }
-    ],
-    "minimum-stability": "stable",
-    "autoload": {
-        "psr-4": {
-            "Midnight\\Grid\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "MidnightTest\\Unit\\Grid\\": "tests/unit"
-        }
-    }
+	"name": "midnight/grid",
+	"description": "A library for two-dimensional data grids (tables)",
+	"type": "library",
+	"license": "MIT",
+	"require": {
+		"php": "^7.1"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^5.4"
+	},
+	"authors": [
+		{
+			"name": "Rudolph Gottesheim",
+			"email": "r.gottesheim@loot.at"
+		}
+	],
+	"minimum-stability": "stable",
+	"autoload": {
+		"psr-4": {
+			"Midnight\\Grid\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"MidnightTest\\Unit\\Grid\\": "tests/unit"
+		}
+	},
+	"config": {
+		"sort-packages": true
+	}
 }

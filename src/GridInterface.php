@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid;
 
@@ -7,10 +7,10 @@ interface GridInterface
     /**
      * @return RowInterface[]
      */
-    public function getRows():array;
+    public function getRows(): iterable;
 
     /**
      * @return ColumnInterface[]
      */
-    public function getColumns():array;
+    public function getColumns(): iterable;
 }

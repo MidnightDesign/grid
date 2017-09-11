@@ -12,12 +12,6 @@ class SimpleColumnTest extends PHPUnit_Framework_TestCase
     /** @var string */
     private $key;
 
-    protected function setUp()
-    {
-        $this->key = 'foo';
-        $this->column = new SimpleColumn($this->key);
-    }
-
     public function testGetKey()
     {
         $this->assertSame($this->key, $this->column->getKey());
@@ -35,5 +29,11 @@ class SimpleColumnTest extends PHPUnit_Framework_TestCase
         $this->column->setLabel($label);
 
         $this->assertSame($label, $this->column->getLabel());
+    }
+
+    protected function setUp()
+    {
+        $this->key = 'foo';
+        $this->column = new SimpleColumn($this->key);
     }
 }

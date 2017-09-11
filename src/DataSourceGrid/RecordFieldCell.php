@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid;
 
@@ -12,11 +12,6 @@ class RecordFieldCell implements CellInterface
     /** @var string */
     private $key;
 
-    /**
-     * RecordFieldCell constructor.
-     * @param RecordInterface $record
-     * @param string $key
-     */
     public function __construct(RecordInterface $record, string $key)
     {
         $this->record = $record;

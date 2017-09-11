@@ -20,13 +20,6 @@ class RecordFieldCellTest extends PHPUnit_Framework_TestCase
     /** @var array */
     private $data;
 
-    protected function setUp()
-    {
-        $this->data = [$this->columnKey => $this->name, 'age' => 30];
-        $this->record = new ArrayRecord($this->data);
-        $this->cell = new RecordFieldCell($this->record, $this->columnKey);
-    }
-
     public function testGetData()
     {
         $this->assertSame($this->name, $this->cell->getData());
@@ -37,5 +30,12 @@ class RecordFieldCellTest extends PHPUnit_Framework_TestCase
         $this->cell = new RecordFieldCell($this->record, 'does-not-exist');
 
         $this->assertNull($this->cell->getData());
+    }
+
+    protected function setUp()
+    {
+        $this->data = [$this->columnKey => $this->name, 'age' => 30];
+        $this->record = new ArrayRecord($this->data);
+        $this->cell = new RecordFieldCell($this->record, $this->columnKey);
     }
 }

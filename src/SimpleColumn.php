@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid;
 
@@ -14,12 +14,12 @@ class SimpleColumn implements ColumnInterface
         $this->key = $key;
     }
 
-    public function getKey():string
+    public function getKey(): string
     {
         return $this->key;
     }
 
-    public function getLabel():string
+    public function getLabel(): string
     {
         if ($this->label === null) {
             return $this->getKey();

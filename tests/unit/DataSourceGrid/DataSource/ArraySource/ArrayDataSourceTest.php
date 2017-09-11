@@ -16,11 +16,6 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
     /** @var ArrayDataSource */
     private $dataSource;
 
-    protected function setUp()
-    {
-        $this->dataSource = new ArrayDataSource($this->data);
-    }
-
     public function testGetRecordsReturnsRecords()
     {
         $records = $this->dataSource->getRecords();
@@ -35,5 +30,10 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
         $this->assertCount(2, $fieldNames);
         $this->assertContains('name', $fieldNames);
         $this->assertContains('age', $fieldNames);
+    }
+
+    protected function setUp()
+    {
+        $this->dataSource = new ArrayDataSource($this->data);
     }
 }

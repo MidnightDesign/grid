@@ -12,14 +12,14 @@ class SimpleCellTest extends PHPUnit_Framework_TestCase
     /** @var SimpleCell */
     private $cell;
 
+    public function testGetData()
+    {
+        $this->assertSame($this->data, $this->cell->getData());
+    }
+
     protected function setUp()
     {
         $this->data = 'Foo';
         $this->cell = new SimpleCell($this->data);
-    }
-
-    public function testGetData()
-    {
-        $this->assertSame($this->data, $this->cell->getData());
     }
 }

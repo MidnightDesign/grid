@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Midnight\Grid\DataSourceGrid\DataSource\ArraySource;
 
@@ -23,7 +23,7 @@ class ArrayRecord implements RecordInterface
         return $this->data[$key];
     }
 
-    public function hasField(string $key):bool
+    public function hasField(string $key): bool
     {
         return array_key_exists($key, $this->data);
     }

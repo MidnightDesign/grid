@@ -21,12 +21,6 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
         ['name' => 'Caro', 'age' => 25],
     ];
 
-    protected function setUp()
-    {
-        $this->dataSource = new ArrayDataSource($this->data);
-        $this->grid = new DataSourceGrid($this->dataSource);
-    }
-
     public function testGetRowsReturnsArrayWithRows()
     {
         $rows = $this->grid->getRows();
@@ -49,5 +43,11 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
 
         $this->assertInternalType('array', $columns);
         $this->assertContainsOnlyInstancesOf(ColumnInterface::class, $columns);
+    }
+
+    protected function setUp()
+    {
+        $this->dataSource = new ArrayDataSource($this->data);
+        $this->grid = new DataSourceGrid($this->dataSource);
     }
 }

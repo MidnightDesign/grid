@@ -17,12 +17,6 @@ class RecordRowTest extends PHPUnit_Framework_TestCase
     /** @var array */
     private $data = ['name' => 'Rudi', 'age' => 30];
 
-    protected function setUp()
-    {
-        $this->record = new ArrayRecord($this->data);
-        $this->row = new RecordRow($this->record);
-    }
-
     public function testGetCell()
     {
         $cell = $this->row->getCell(new SimpleColumn('name'));
@@ -30,5 +24,11 @@ class RecordRowTest extends PHPUnit_Framework_TestCase
 
         $cell = $this->row->getCell(new SimpleColumn('age'));
         $this->assertSame(30, $cell->getData());
+    }
+
+    protected function setUp()
+    {
+        $this->record = new ArrayRecord($this->data);
+        $this->row = new RecordRow($this->record);
     }
 }
