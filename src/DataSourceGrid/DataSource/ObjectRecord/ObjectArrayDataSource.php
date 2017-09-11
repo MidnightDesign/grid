@@ -5,7 +5,7 @@ namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 use Midnight\Grid\DataSourceGrid\DataSource\DataSourceInterface;
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class ObjectArrayDataSource implements DataSourceInterface
+final class ObjectArrayDataSource implements DataSourceInterface
 {
     /** @var object[] */
     private $objects;

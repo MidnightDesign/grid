@@ -9,7 +9,7 @@ use Midnight\Grid\{
 /**
  * @todo Use a template
  */
-class HtmlRenderer implements GridRendererInterface
+final class HtmlRenderer implements GridRendererInterface
 {
     public function render(GridInterface $grid): string
     {

@@ -2,7 +2,7 @@
 
 namespace Midnight\Grid;
 
-class SimpleCell implements CellInterface
+final class SimpleCell implements CellInterface
 {
     /** @var mixed */
     private $data;

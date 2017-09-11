@@ -4,7 +4,7 @@ namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class GetterRecordFactory implements ObjectRecordFactoryInterface
+final class GetterRecordFactory implements ObjectRecordFactoryInterface
 {
     /** @var string[] */
     private $getterMap;

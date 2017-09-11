@@ -5,7 +5,7 @@ namespace Midnight\Grid\DataSourceGrid;
 use Midnight\Grid\CellInterface;
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class RecordFieldCell implements CellInterface
+final class RecordFieldCell implements CellInterface
 {
     /** @var RecordInterface */
     private $record;

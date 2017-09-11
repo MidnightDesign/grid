@@ -8,7 +8,7 @@ use Midnight\Grid\GridInterface;
 use Midnight\Grid\RowInterface;
 use Midnight\Grid\SimpleColumn;
 
-class DataSourceGrid implements GridInterface
+final class DataSourceGrid implements GridInterface
 {
     /** @var DataSource\DataSourceInterface */
     private $dataSource;

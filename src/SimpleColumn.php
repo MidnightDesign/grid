@@ -2,7 +2,7 @@
 
 namespace Midnight\Grid;
 
-class SimpleColumn implements ColumnInterface
+final class SimpleColumn implements ColumnInterface
 {
     /** @var string */
     private $key;
@@ -27,8 +27,10 @@ class SimpleColumn implements ColumnInterface
         return $this->label;
     }
 
-    public function setLabel(string $label)
+    public function withLabel(string $label): self
     {
-        $this->label = $label;
+        $clone = clone $this;
+        $clone->label = $label;
+        return $clone;
     }
 }

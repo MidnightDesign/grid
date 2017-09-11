@@ -2,11 +2,12 @@
 
 namespace Midnight\Grid\DataSourceGrid;
 
-use Midnight\Grid\{
-    CellInterface, ColumnInterface, DataSourceGrid\DataSource\RecordInterface, RowInterface
-};
+use Midnight\Grid\CellInterface;
+use Midnight\Grid\ColumnInterface;
+use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
+use Midnight\Grid\RowInterface;
 
-class RecordRow implements RowInterface
+final class RecordRow implements RowInterface
 {
     /** @var RecordInterface */
     private $record;

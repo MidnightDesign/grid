@@ -22,13 +22,23 @@ class SimpleColumnTest extends PHPUnit_Framework_TestCase
         $this->assertSame($this->key, $this->column->getLabel());
     }
 
-    public function testSetLabel()
+    public function testWithLabelReturnsDifferentInstance()
+    {
+        $clone = $this->column->withLabel('Bar');
+
+        $this->assertNotSame($this->column, $clone);
+    }
+
+    /**
+     * @depends testWithLabelReturnsDifferentInstance
+     */
+    public function testWithLabelUpdatesLabel()
     {
         $label = 'Bar';
 
-        $this->column->setLabel($label);
+        $clone = $this->column->withLabel($label);
 
-        $this->assertSame($label, $this->column->getLabel());
+        $this->assertSame($label, $clone->getLabel());
     }
 
     protected function setUp()

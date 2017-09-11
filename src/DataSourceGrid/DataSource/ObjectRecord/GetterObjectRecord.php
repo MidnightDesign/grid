@@ -5,7 +5,7 @@ namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 use Midnight\Grid\DataSourceGrid\DataSource\Exception\UnknownFieldException;
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class GetterObjectRecord implements RecordInterface
+final class GetterObjectRecord implements RecordInterface
 {
     /** @var object */
     private $object;

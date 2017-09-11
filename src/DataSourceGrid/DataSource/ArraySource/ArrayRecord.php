@@ -5,7 +5,7 @@ namespace Midnight\Grid\DataSourceGrid\DataSource\ArraySource;
 use Midnight\Grid\DataSourceGrid\DataSource\Exception\UnknownFieldException;
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class ArrayRecord implements RecordInterface
+final class ArrayRecord implements RecordInterface
 {
     /** @var array */
     private $data;

@@ -5,7 +5,7 @@ namespace Midnight\Grid\DataSourceGrid\DataSource\ArraySource;
 use Midnight\Grid\DataSourceGrid\DataSource\DataSourceInterface;
 use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
-class ArrayDataSource implements DataSourceInterface
+final class ArrayDataSource implements DataSourceInterface
 {
     /** @var array */
     private $data;
@@ -18,7 +18,7 @@ class ArrayDataSource implements DataSourceInterface
     /**
      * @return RecordInterface[]
      */
-    public function getRecords(): array
+    public function getRecords(): iterable
     {
         return array_map([$this, 'createRecord'], $this->data);
     }
