@@ -3,17 +3,14 @@
 namespace Midnight\Grid\View;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface
+    CellInterface, ColumnInterface, GridInterface, RowInterface
 };
 
-/**
- * @todo Use a template
- */
 final class HtmlRenderer implements GridRendererInterface
 {
     public function render(GridInterface $grid): string
     {
-        return "<table>{$this->thead($grid)}{$this->tbody($grid)}</table>";
+        return "<table>{$this->thead($grid)}{$this->tbody($grid)}{$this->tfoot($grid)}</table>";
     }
 
     private function thead(GridInterface $grid): string
@@ -26,9 +23,26 @@ final class HtmlRenderer implements GridRendererInterface
         return implode("\n", array_map([$this, 'th'], $grid->getColumns()));
     }
 
+    private function tfoot(GridInterface $grid): string
+    {
+        return "<tfoot><tr>{$this->footers($grid)}</tr></tfoot>";
+    }
+
+    private function footers(GridInterface $grid): string
+    {
+        $row = $grid->getFooterRow();
+        return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
+            return $this->td($row->getCell($column));
+        }, $grid->getColumns()));
+    }
+
     private function th(ColumnInterface $column): string
     {
         return "<th>{$column->getKey()}</th>";
+    }
+
+    private function td(CellInterface $cell) {
+        return "<td>{$cell->getData()}</td>";
     }
 
     private function tbody(GridInterface $grid): string
@@ -43,13 +57,10 @@ final class HtmlRenderer implements GridRendererInterface
         }, $grid->getRows()));
     }
 
-    /**
-     * @param ColumnInterface[] $columns
-     */
     private function cells(RowInterface $row, array $columns): string
     {
         return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
-            return "<td>{$row->getCell($column)->getData()}</td>";
+            return $this->td($row->getCell($column));
         }, $columns));
     }
 }
