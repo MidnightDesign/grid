@@ -37,4 +37,9 @@ final class ArrayDataSource implements DataSourceInterface
     {
         return new ArrayRecord($data);
     }
+
+    public function getFooterRecord(): RecordInterface
+    {
+        return $this->createRecord(array_pop($this->data));
+    }
 }

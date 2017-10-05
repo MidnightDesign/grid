@@ -13,4 +13,6 @@ interface GridInterface
      * @return ColumnInterface[]
      */
     public function getColumns(): iterable;
+
+    public function getFooterRow(): RowInterface;
 }

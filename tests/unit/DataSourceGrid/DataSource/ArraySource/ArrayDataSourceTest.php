@@ -23,6 +23,13 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
         $this->assertContainsOnlyInstancesOf(RecordInterface::class, $records);
     }
 
+    public function testGetFooterRecord()
+    {
+        $record = $this->dataSource->getFooterRecord();
+
+        $this->assertSame(25, $record->getField('age'));
+    }
+
     public function testGetFieldNames()
     {
         $fieldNames = $this->dataSource->getFieldNames();

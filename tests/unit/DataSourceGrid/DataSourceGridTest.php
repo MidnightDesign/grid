@@ -29,6 +29,18 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
         $this->assertContainsOnlyInstancesOf(RowInterface::class, $rows);
     }
 
+    public function testGetFooterRow()
+    {
+        $row = $this->grid->getFooterRow();
+        $columns = $this->grid->getColumns();
+
+        $rowData = array_map(function($column) use ($row) {
+            return $row->getCell($column)->getData();
+        }, $columns);
+
+        $this->assertSame(['Caro', 25], $rowData);
+    }
+
     public function testGetColumnKeys()
     {
         $columnKeys = $this->grid->getColumnKeys();

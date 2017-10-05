@@ -39,4 +39,9 @@ final class ObjectArrayDataSource implements DataSourceInterface
     {
         return $this->recordFactory->getFieldNames();
     }
+
+    public function getFooterRecord(): RecordInterface
+    {
+        return $this->recordFactory->create(array_pop($this->objects));
+    }
 }
