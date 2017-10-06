@@ -13,6 +13,9 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
         ['name' => 'Rudi', 'age' => 30],
         ['name' => 'Caro', 'age' => 25],
     ];
+    private $footerData = [
+        ['name' => '', 'age' => 27.5]
+    ];
     /** @var ArrayDataSource */
     private $dataSource;
 
@@ -25,9 +28,10 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
 
     public function testGetFooterRecord()
     {
-        $record = $this->dataSource->getFooterRecord();
+        $records = $this->dataSource->getFooterRecords();
 
-        $this->assertSame(25, $record->getField('age'));
+        $this->assertContainsOnlyInstancesOf(RecordInterface::class, $records);
+        $this->assertCount(1, $records);
     }
 
     public function testGetFieldNames()
@@ -41,6 +45,6 @@ class ArrayDataSourceTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->dataSource = new ArrayDataSource($this->data);
+        $this->dataSource = new ArrayDataSource($this->data, $this->footerData);
     }
 }

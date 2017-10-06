@@ -9,23 +9,20 @@ final class ArrayDataSource implements DataSourceInterface
 {
     /** @var array */
     private $data;
+    /** @var array */
+    private $footerData;
 
-    public function __construct(array $data)
+    public function __construct(array $data, array $footerData)
     {
         $this->data = $data;
+        $this->footerData = $footerData;
     }
 
-    /**
-     * @return RecordInterface[]
-     */
     public function getRecords(): iterable
     {
         return array_map([$this, 'createRecord'], $this->data);
     }
 
-    /**
-     * @return string[]
-     */
     public function getFieldNames(): array
     {
         return array_unique(array_reduce($this->data, function (array $fieldNames, array $recordData) {
@@ -38,8 +35,8 @@ final class ArrayDataSource implements DataSourceInterface
         return new ArrayRecord($data);
     }
 
-    public function getFooterRecord(): RecordInterface
+    public function getFooterRecords(): iterable
     {
-        return $this->createRecord(array_pop($this->data));
+        return array_map([$this, 'createRecord'], $this->footerData);
     }
 }

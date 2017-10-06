@@ -36,9 +36,9 @@ final class DataSourceGrid implements GridInterface
         return array_map([$this, 'createColumn'], $this->dataSource->getFieldNames());
     }
 
-    public function getFooterRow(): RowInterface
+    public function getFooterRows(): iterable
     {
-        return $this->createRow($this->dataSource->getFooterRecord());
+        return array_map([$this, 'createRow'], $this->dataSource->getFooterRecords());
     }
 
     private function createRow(RecordInterface $record): RowInterface

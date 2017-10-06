@@ -20,6 +20,10 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
         ['name' => 'Rudi', 'age' => 30],
         ['name' => 'Caro', 'age' => 25],
     ];
+    /** @var array */
+    private $footerData = [
+        ['name' => '', 'age' => 27.5]
+    ];
 
     public function testGetRowsReturnsArrayWithRows()
     {
@@ -31,14 +35,10 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
 
     public function testGetFooterRow()
     {
-        $row = $this->grid->getFooterRow();
-        $columns = $this->grid->getColumns();
+        $rows = $this->grid->getFooterRows();
 
-        $rowData = array_map(function($column) use ($row) {
-            return $row->getCell($column)->getData();
-        }, $columns);
-
-        $this->assertSame(['Caro', 25], $rowData);
+        $this->assertInternalType('array', $rows);
+        $this->assertContainsOnlyInstancesOf(RowInterface::class, $rows);
     }
 
     public function testGetColumnKeys()
@@ -59,7 +59,7 @@ class DataSourceGridTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->dataSource = new ArrayDataSource($this->data);
+        $this->dataSource = new ArrayDataSource($this->data, $this->footerData);
         $this->grid = new DataSourceGrid($this->dataSource);
     }
 }

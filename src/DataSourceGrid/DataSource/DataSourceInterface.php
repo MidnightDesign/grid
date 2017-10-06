@@ -14,5 +14,8 @@ interface DataSourceInterface
      */
     public function getFieldNames(): array;
 
-    public function getFooterRecord(): RecordInterface;
+    /**
+     * @return RecordInterface[]
+     */
+    public function getFooterRecords(): iterable;
 }
