@@ -3,18 +3,26 @@
 namespace Midnight\Grid\View;
 
 use Midnight\Grid\{
-    CellInterface, ColumnInterface, GridInterface, RowInterface
+    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer
 };
 
 final class HtmlRenderer implements GridRendererInterface
 {
+    /** @var CellRendererInterface */
+    private $cellRenderer;
+
+    public function __construct(CellRendererInterface $cellRenderer = null)
+    {
+        $this->cellRenderer = $cellRenderer ?? new SimpleCellRenderer();
+    }
+
     public function render(GridInterface $grid): string
     {
         $html = "<table>{$this->thead($grid)}{$this->tbody($grid)}";
         if (count($grid->getFooterRows()) > 0) {
             $html .= $this->tfoot($grid);
         }
-        $html .= "</table>";
+        $html .= '</table>';
         return $html;
     }
 
@@ -57,18 +65,15 @@ final class HtmlRenderer implements GridRendererInterface
         }, $grid->getFooterRows()));
     }
 
-    private function tr(RowInterface $row, array $columns) {
+    private function tr(RowInterface $row, array $columns)
+    {
         return "<tr>{$this->cells($row, $columns)}</tr>";
     }
 
     private function cells(RowInterface $row, array $columns): string
     {
         return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
-            return $this->td($row->getCell($column));
+            return $this->cellRenderer->render($row->getCell($column), $column);
         }, $columns));
-    }
-
-    private function td(CellInterface $cell) {
-        return "<td>{$cell->getData()}</td>";
     }
 }
