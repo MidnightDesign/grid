@@ -12,7 +12,7 @@ final class ArrayDataSource implements DataSourceInterface
     /** @var array */
     private $footerData;
 
-    public function __construct(array $data, array $footerData)
+    public function __construct(array $data, array $footerData = [])
     {
         $this->data = $data;
         $this->footerData = $footerData;

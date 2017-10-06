@@ -38,8 +38,7 @@ final class HtmlRendererTest extends PHPUnit_Framework_TestCase
                 ['name' => 'Rudi', 'age' => 30],
                 ['name' => 'Caro', 'age' => 25],
                 ['name' => 'Wolf', 'age' => 35]
-            ],
-            []
+            ]
         );
         $grid = new DataSourceGrid($dataSource);
         $html = $this->renderer->render($grid);

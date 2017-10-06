@@ -18,7 +18,7 @@ final class ObjectArrayDataSource implements DataSourceInterface
      * @param object[] $footerObjects
      * @param ObjectRecordFactoryInterface $recordFactory
      */
-    public function __construct(array $objects, array $footerObjects, ObjectRecordFactoryInterface $recordFactory)
+    public function __construct(array $objects, array $footerObjects = [], ObjectRecordFactoryInterface $recordFactory)
     {
         $this->objects = $objects;
         $this->footerObjects = $footerObjects;
