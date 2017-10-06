@@ -14,8 +14,6 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
     private $dataSource;
     /** @var object[] */
     private $objects;
-    /** @var object[] */
-    private $footerObjects;
     /** @var ObjectRecordFactoryInterface */
     private $recordFactory;
 
@@ -31,8 +29,7 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
     {
         $records = $this->dataSource->getFooterRecords();
 
-        $this->assertContainsOnlyInstancesOf(RecordInterface::class, $records);
-        $this->assertCount(1, $records);
+        $this->assertCount(0, $records);
     }
 
     public function testGetFieldNames()
@@ -50,10 +47,7 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
             new Person('Rudi', 30),
             new Person('Caro', 25),
         ];
-        $this->footerObjects = [
-            new Person('', 27.5),
-        ];
         $this->recordFactory = new GetterRecordFactory(['name' => 'getName', 'age' => 'getAge']);
-        $this->dataSource = new ObjectArrayDataSource($this->objects, $this->footerObjects, $this->recordFactory);
+        $this->dataSource = new ObjectArrayDataSource($this->objects, $this->recordFactory);
     }
 }
