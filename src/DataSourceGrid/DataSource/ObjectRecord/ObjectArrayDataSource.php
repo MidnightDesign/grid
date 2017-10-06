@@ -3,7 +3,6 @@
 namespace Midnight\Grid\DataSourceGrid\DataSource\ObjectRecord;
 
 use Midnight\Grid\DataSourceGrid\DataSource\DataSourceInterface;
-use Midnight\Grid\DataSourceGrid\DataSource\RecordInterface;
 
 final class ObjectArrayDataSource implements DataSourceInterface
 {
@@ -13,8 +12,6 @@ final class ObjectArrayDataSource implements DataSourceInterface
     private $recordFactory;
 
     /**
-     * ObjectArrayDataSource constructor.
-     *
      * @param object[] $objects
      * @param ObjectRecordFactoryInterface $recordFactory
      */
@@ -24,19 +21,18 @@ final class ObjectArrayDataSource implements DataSourceInterface
         $this->recordFactory = $recordFactory;
     }
 
-    /**
-     * @return RecordInterface[]
-     */
     public function getRecords(): array
     {
         return array_map([$this->recordFactory, 'create'], $this->objects);
     }
 
-    /**
-     * @return string[]
-     */
     public function getFieldNames(): array
     {
         return $this->recordFactory->getFieldNames();
+    }
+
+    public function getFooterRecords(): iterable
+    {
+        return [];
     }
 }

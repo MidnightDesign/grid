@@ -25,6 +25,13 @@ class ObjectArrayDataSourceTest extends PHPUnit_Framework_TestCase
         $this->assertContainsOnlyInstancesOf(RecordInterface::class, $records);
     }
 
+    public function testGetFooterRecord()
+    {
+        $records = $this->dataSource->getFooterRecords();
+
+        $this->assertCount(0, $records);
+    }
+
     public function testGetFieldNames()
     {
         $fieldNames = $this->dataSource->getFieldNames();

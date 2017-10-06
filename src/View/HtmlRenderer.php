@@ -3,17 +3,19 @@
 namespace Midnight\Grid\View;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface
+    CellInterface, ColumnInterface, GridInterface, RowInterface
 };
 
-/**
- * @todo Use a template
- */
 final class HtmlRenderer implements GridRendererInterface
 {
     public function render(GridInterface $grid): string
     {
-        return "<table>{$this->thead($grid)}{$this->tbody($grid)}</table>";
+        $html = "<table>{$this->thead($grid)}{$this->tbody($grid)}";
+        if (count($grid->getFooterRows()) > 0) {
+            $html .= $this->tfoot($grid);
+        }
+        $html .= "</table>";
+        return $html;
     }
 
     private function thead(GridInterface $grid): string
@@ -39,17 +41,34 @@ final class HtmlRenderer implements GridRendererInterface
     private function rows(GridInterface $grid): string
     {
         return implode("\n", array_map(function (RowInterface $row) use ($grid) {
-            return "<tr>{$this->cells($row, $grid->getColumns())}</tr>";
+            return $this->tr($row, $grid->getColumns());
         }, $grid->getRows()));
     }
 
-    /**
-     * @param ColumnInterface[] $columns
-     */
+    private function tfoot(GridInterface $grid): string
+    {
+        return "<tfoot>{$this->footerRows($grid)}</tfoot>";
+    }
+
+    private function footerRows(GridInterface $grid): string
+    {
+        return implode("\n", array_map(function (RowInterface $row) use ($grid) {
+            return $this->tr($row, $grid->getColumns());
+        }, $grid->getFooterRows()));
+    }
+
+    private function tr(RowInterface $row, array $columns) {
+        return "<tr>{$this->cells($row, $columns)}</tr>";
+    }
+
     private function cells(RowInterface $row, array $columns): string
     {
         return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
-            return "<td>{$row->getCell($column)->getData()}</td>";
+            return $this->td($row->getCell($column));
         }, $columns));
+    }
+
+    private function td(CellInterface $cell) {
+        return "<td>{$cell->getData()}</td>";
     }
 }
