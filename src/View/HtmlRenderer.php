@@ -73,7 +73,10 @@ final class HtmlRenderer implements GridRendererInterface
     private function cells(RowInterface $row, array $columns): string
     {
         return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
-            return $this->cellRenderer->render($row->getCell($column), $column);
+            $data = null !== $row->getCell($column)->getData()
+                ? $this->cellRenderer->render($row->getCell($column), $column)
+                : '';
+            return "<td>{$data}</td>";
         }, $columns));
     }
 }

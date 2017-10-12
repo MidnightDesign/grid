@@ -9,6 +9,6 @@ class SimpleCellRenderer implements CellRendererInterface
 {
     public function render(CellInterface $cell, ColumnInterface $column): string
     {
-        return "<td>{$cell->getData()}</td>";
+        return (string)$cell->getData();
     }
 }
