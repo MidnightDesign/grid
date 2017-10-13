@@ -3,7 +3,7 @@
 namespace Midnight\Grid\View;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer
+    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer, View\HtmlRenderer\TdCellRenderer
 };
 
 final class HtmlRenderer implements GridRendererInterface
@@ -11,9 +11,11 @@ final class HtmlRenderer implements GridRendererInterface
     /** @var CellRendererInterface */
     private $cellRenderer;
 
-    public function __construct(CellRendererInterface $cellRenderer = null)
-    {
-        $this->cellRenderer = $cellRenderer ?? new SimpleCellRenderer();
+    public function __construct(
+        CellRendererInterface $cellRenderer = null,
+        CellRendererInterface $tdRenderer = null
+    ) {
+        $this->cellRenderer = $tdRenderer ?? new TdCellRenderer($cellRenderer ?? new SimpleCellRenderer());
     }
 
     public function render(GridInterface $grid): string
@@ -73,10 +75,7 @@ final class HtmlRenderer implements GridRendererInterface
     private function cells(RowInterface $row, array $columns): string
     {
         return implode("\n", array_map(function (ColumnInterface $column) use ($row) {
-            $data = null !== $row->getCell($column)->getData()
-                ? $this->cellRenderer->render($row->getCell($column), $column)
-                : '';
-            return "<td>{$data}</td>";
+            return $this->cellRenderer->render($row->getCell($column), $column);
         }, $columns));
     }
 }
