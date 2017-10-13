@@ -3,7 +3,7 @@
 namespace Midnight\Grid\View;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer
+    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer, View\HtmlRenderer\TdCellRenderer
 };
 
 final class HtmlRenderer implements GridRendererInterface
@@ -11,9 +11,8 @@ final class HtmlRenderer implements GridRendererInterface
     /** @var CellRendererInterface */
     private $cellRenderer;
 
-    public function __construct(CellRendererInterface $cellRenderer = null)
-    {
-        $this->cellRenderer = $cellRenderer ?? new SimpleCellRenderer();
+    public function __construct(CellRendererInterface $cellRenderer = null) {
+        $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new SimpleCellRenderer());
     }
 
     public function render(GridInterface $grid): string
