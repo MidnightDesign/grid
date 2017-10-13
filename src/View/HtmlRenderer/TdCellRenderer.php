@@ -17,7 +17,6 @@ class TdCellRenderer implements CellRendererInterface
 
     public function render(CellInterface $cell, ColumnInterface $column): string
     {
-        $data = null !== $cell->getData() ? $this->cellRenderer->render($cell, $column) : '';
-        return "<td>{$data}</td>";
+        return "<td>{$this->cellRenderer->render($cell, $column)}</td>";
     }
 }

@@ -11,11 +11,8 @@ final class HtmlRenderer implements GridRendererInterface
     /** @var CellRendererInterface */
     private $cellRenderer;
 
-    public function __construct(
-        CellRendererInterface $cellRenderer = null,
-        CellRendererInterface $tdRenderer = null
-    ) {
-        $this->cellRenderer = $tdRenderer ?? new TdCellRenderer($cellRenderer ?? new SimpleCellRenderer());
+    public function __construct(CellRendererInterface $cellRenderer = null) {
+        $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new SimpleCellRenderer());
     }
 
     public function render(GridInterface $grid): string
