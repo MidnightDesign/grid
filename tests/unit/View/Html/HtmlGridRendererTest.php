@@ -1,12 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Midnight\Grid\View;
+namespace MidnightTest\Unit\Grid\View\Html;
 
 use Midnight\Grid\DataSourceGrid\DataSource\ArraySource\ArrayDataSource;
 use Midnight\Grid\DataSourceGrid\DataSourceGrid;
+use Midnight\Grid\View\GridRendererInterface;
+use Midnight\Grid\View\Html\HtmlGridRenderer;
 use PHPUnit_Framework_TestCase;
 
-final class HtmlRendererTest extends PHPUnit_Framework_TestCase
+final class HtmlGridRendererTest extends PHPUnit_Framework_TestCase
 {
     /** @var GridRendererInterface */
     private $renderer;
@@ -17,10 +19,10 @@ final class HtmlRendererTest extends PHPUnit_Framework_TestCase
             [
                 ['name' => 'Rudi', 'age' => 30],
                 ['name' => 'Caro', 'age' => 25],
-                ['name' => 'Wolf', 'age' => 35]
+                ['name' => 'Wolf', 'age' => 35],
             ],
             [
-                ['name' => '',     'age' => 30]
+                ['name' => '', 'age' => 30],
             ]
         );
         $grid = new DataSourceGrid($dataSource);
@@ -37,7 +39,7 @@ final class HtmlRendererTest extends PHPUnit_Framework_TestCase
             [
                 ['name' => 'Rudi', 'age' => 30],
                 ['name' => 'Caro', 'age' => 25],
-                ['name' => 'Wolf', 'age' => 35]
+                ['name' => 'Wolf', 'age' => 35],
             ]
         );
         $grid = new DataSourceGrid($dataSource);
@@ -50,6 +52,6 @@ final class HtmlRendererTest extends PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->renderer = new HtmlRenderer();
+        $this->renderer = new HtmlGridRenderer();
     }
 }
