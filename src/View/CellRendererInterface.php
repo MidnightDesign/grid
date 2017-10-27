@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Midnight\Grid\View\HtmlRenderer;
+namespace Midnight\Grid\View;
 
 use Midnight\Grid\CellInterface;
 use Midnight\Grid\ColumnInterface;

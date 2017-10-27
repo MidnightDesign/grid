@@ -1,9 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Midnight\Grid\View\HtmlRenderer;
+namespace Midnight\Grid\View\Html;
 
 use Midnight\Grid\CellInterface;
 use Midnight\Grid\ColumnInterface;
+use Midnight\Grid\View\CellRendererInterface;
 
 class TdCellRenderer implements CellRendererInterface
 {

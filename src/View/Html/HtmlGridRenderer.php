@@ -1,18 +1,18 @@
 <?php declare(strict_types=1);
 
-namespace Midnight\Grid\View;
+namespace Midnight\Grid\View\Html;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface, View\HtmlRenderer\CellRendererInterface, View\HtmlRenderer\SimpleCellRenderer, View\HtmlRenderer\TdCellRenderer
+    ColumnInterface, GridInterface, RowInterface, View\CellRendererInterface, View\GridRendererInterface, View\StringCastCellRenderer
 };
 
-final class HtmlRenderer implements GridRendererInterface
+final class HtmlGridRenderer implements GridRendererInterface
 {
     /** @var CellRendererInterface */
     private $cellRenderer;
 
     public function __construct(CellRendererInterface $cellRenderer = null) {
-        $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new SimpleCellRenderer());
+        $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new StringCastCellRenderer());
     }
 
     public function render(GridInterface $grid): string
