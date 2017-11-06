@@ -15,7 +15,7 @@ final class HtmlGridRenderer implements GridRendererInterface
 
     public function __construct(CellRendererInterface $cellRenderer = null, ColumnHeadRendererInterface $headRenderer = null) {
         $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new StringCastCellRenderer());
-        $this->headRenderer = $headRenderer ?? new KeyColumnHeadRenderer();
+        $this->headRenderer = $headRenderer ?? new ThColumnHeadRenderer(new KeyColumnHeadRenderer());
     }
 
     public function render(GridInterface $grid): string
@@ -35,12 +35,9 @@ final class HtmlGridRenderer implements GridRendererInterface
 
     private function headers(GridInterface $grid): string
     {
-        return implode("\n", array_map([$this, 'th'], $grid->getColumns()));
-    }
-
-    private function th(ColumnInterface $column): string
-    {
-        return "<th>{$this->headRenderer->render($column)}</th>";
+        return implode("\n", array_map(function (ColumnInterface $column) {
+            return $this->headRenderer->render($column);
+        }, $grid->getColumns()));
     }
 
     private function tbody(GridInterface $grid): string
