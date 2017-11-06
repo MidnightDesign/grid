@@ -3,16 +3,19 @@
 namespace Midnight\Grid\View\Html;
 
 use Midnight\Grid\{
-    ColumnInterface, GridInterface, RowInterface, View\CellRendererInterface, View\GridRendererInterface, View\StringCastCellRenderer
+    ColumnInterface, GridInterface, RowInterface, View\CellRendererInterface, View\ColumnHeadRendererInterface, View\GridRendererInterface, View\KeyColumnHeadRenderer, View\StringCastCellRenderer
 };
 
 final class HtmlGridRenderer implements GridRendererInterface
 {
     /** @var CellRendererInterface */
     private $cellRenderer;
+    /** @var ColumnHeadRendererInterface */
+    private $headRenderer;
 
-    public function __construct(CellRendererInterface $cellRenderer = null) {
+    public function __construct(CellRendererInterface $cellRenderer = null, ColumnHeadRendererInterface $headRenderer = null) {
         $this->cellRenderer = $cellRenderer ?? new TdCellRenderer(new StringCastCellRenderer());
+        $this->headRenderer = $headRenderer ?? new KeyColumnHeadRenderer();
     }
 
     public function render(GridInterface $grid): string
@@ -37,7 +40,7 @@ final class HtmlGridRenderer implements GridRendererInterface
 
     private function th(ColumnInterface $column): string
     {
-        return "<th>{$column->getKey()}</th>";
+        return "<th>{$this->headRenderer->render($column)}}</th>";
     }
 
     private function tbody(GridInterface $grid): string
