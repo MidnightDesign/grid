@@ -40,7 +40,7 @@ final class HtmlGridRenderer implements GridRendererInterface
 
     private function th(ColumnInterface $column): string
     {
-        return "<th>{$this->headRenderer->render($column)}}</th>";
+        return "<th>{$this->headRenderer->render($column)}</th>";
     }
 
     private function tbody(GridInterface $grid): string
